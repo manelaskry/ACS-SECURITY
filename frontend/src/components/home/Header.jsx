@@ -20,9 +20,9 @@ const Header = () => {
           <h2 className="text-5xl sm:text-6xl md:text-[82px] font-semibold max-w-3xl animate-fade-in-up">
             Bienvenue chez ACS Santé et Sécurité au Travail
           </h2>
-          <div className="space-x-6 mt-16 animate-fade-in-up-delay">
-           <a href="#About" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-200 transition">À propos</a>
-           <a href="#Services" className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition">Nos Services</a> 
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-16 animate-fade-in-up-delay">
+           <a href="#About" className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-200 transition inline-block">À propos</a>
+           <a href="#Services" className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition inline-block">Nos Services</a> 
           </div>
         </div>
       </div>

@@ -27,19 +27,19 @@ const Domains = () => {
     {
       icon: <FaHardHat className="text-4xl md:text-5xl text-red-700" />,
       title: "Santé et Sécurité au travail",
-      description: "Audits, évaluations, prévention selon la méthode SUVA STOP.",
+      description: "Vous dirigez une entreprise ? Nous vous aidons à identifier, évaluer et prévenir les risques grâce à la méthode SUVA STOP, pour un environnement de travail plus sûr et plus efficace.",
       badge: "Conformité CFST 6508, expertise certifiée."
     },
     {
       icon: <FaGraduationCap className="text-4xl md:text-5xl text-red-700" />,
       title: "Formations",
-      description: "Sessions sur la sécurité, la prévention et la gestion des risques.",
+      description: "Vous êtes entrepreneur ou travailleur ? Nos formations pratiques vous apprennent à vous protéger contre les risques d’accidents professionnels et à adopter les bons réflexes au quotidien.",
       badge: "Formateurs agréés, pédagogie adaptée au terrain."
     },
     {
       icon: <FaClipboardList className="text-4xl md:text-5xl text-red-700" />,
       title: "Accompagnement réglementaire",
-      description: "Suivi des obligations légales et procédures de conformité.",
+      description: "Libérez-vous de la complexité réglementaire ! Nous assurons le suivi de vos obligations légales et la mise en conformité de vos procédures pour garantir votre sérénité et celle de vos équipes.",
       badge: "Approche personnalisée et durable."
     }
   ]
