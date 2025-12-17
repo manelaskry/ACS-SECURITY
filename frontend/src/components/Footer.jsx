@@ -9,7 +9,7 @@ export const Footer = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8'>
           {/* Company Info */}
           <div>
-            <h3 className='text-2xl font-bold mb-4'>ACS Sécurité</h3>
+            <h3 className='text-2xl font-bold mb-4'>ACS Santé et Sécurité au Travail</h3>
             <p className='text-gray-400 mb-4'>
               Votre partenaire de confiance pour la sécurité et la santé au travail en Suisse.
             </p>
@@ -74,7 +74,7 @@ export const Footer = () => {
             <ul className='space-y-3 text-gray-400'>
               <li className='flex items-center gap-2'>
                 <FaPhone className='text-red-700' />
-                +41 79 900 39 91
+                +41 79 900 39 91 / +41 76 584 39 91
               </li>
               <li className='flex items-center gap-2'>
                 <FaEnvelope className='text-red-700' />
@@ -82,7 +82,7 @@ export const Footer = () => {
               </li>
               <li className='flex items-center gap-2'>
                 <FaMapMarkerAlt className='text-red-700' />
-                Chemin des Écoliers 12 1964 Conthey, Suisse
+                Chemin des Écoliers 12/ 1964 Conthey, Suisse
               </li>
             </ul>
           </div>
