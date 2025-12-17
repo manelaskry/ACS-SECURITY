@@ -1,48 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { FaHardHat, FaGraduationCap, FaClipboardList, FaCheckCircle, FaShieldAlt, FaUsers } from 'react-icons/fa'
-import bgImage from '../../assets/domain.jpg' 
+import React from 'react'
+import { FaCheckCircle } from 'react-icons/fa'
+import bgImage from '../../assets/domain.jpg'
+import useScrollAnimation from '../../hooks/useScrollAnimation'
+import { services } from '../../data/domainData'
 
 const Domains = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) observer.observe(sectionRef.current)
-
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current)
-    }
-  }, [])
-
-  const services = [
-    {
-      icon: <FaHardHat className="text-4xl md:text-5xl text-red-700" />,
-      title: "Santé et Sécurité au travail",
-      description: "Vous dirigez une entreprise ? Nous vous aidons à identifier, évaluer et prévenir les risques grâce à la méthode SUVA STOP, pour un environnement de travail plus sûr et plus efficace.",
-      badge: "Conformité CFST 6508, expertise certifiée."
-    },
-    {
-      icon: <FaGraduationCap className="text-4xl md:text-5xl text-red-700" />,
-      title: "Formations",
-      description: "Vous êtes entrepreneur ou travailleur ? Nos formations pratiques vous apprennent à vous protéger contre les risques d’accidents professionnels et à adopter les bons réflexes au quotidien.",
-      badge: "Formateurs agréés, pédagogie adaptée au terrain."
-    },
-    {
-      icon: <FaClipboardList className="text-4xl md:text-5xl text-red-700" />,
-      title: "Accompagnement réglementaire",
-      description: "Libérez-vous de la complexité réglementaire ! Nous assurons le suivi de vos obligations légales et la mise en conformité de vos procédures pour garantir votre sérénité et celle de vos équipes.",
-      badge: "Approche personnalisée et durable."
-    }
-  ]
+  const [sectionRef, isVisible] = useScrollAnimation()
 
   return (
     <div 
@@ -55,61 +18,61 @@ const Domains = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Overlay for better text readability */}
       <div className='absolute inset-0 bg-white/50'></div>
 
-      {/* Title Section */}
       <div className='container mx-auto px-6 md:px-20 lg:px-32 relative z-10'>
         <h1 className='text-2xl sm:text-4xl font-bold mb-4 text-center animate-fade-in-up'>
           Nos <span className='underline underline-offset-4 decoration-1 font-light'>Services</span>
         </h1>
+
         <p className='text-gray-800 text-center mb-16 text-l max-w-2xl mx-auto animate-fade-in-up'>
           Découvrez notre gamme complète de services pour assurer la sécurité et la conformité de votre entreprise
         </p>
 
-        {/* Services Grid */}
         <div ref={sectionRef} className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10'>
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              {/* Icon */}
-              <div className='mb-6 flex justify-center lg:justify-start'>
-                {service.icon}
-              </div>
+          {services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <div
+                key={index}
+                className={`bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <div className='mb-6 flex justify-center lg:justify-start'>
+                  <IconComponent className="text-4xl md:text-5xl text-red-700" />
+                </div>
 
-              {/* Title */}
-              <h3 className='text-xl md:text-2xl font-semibold mb-4 text-gray-800 text-center lg:text-left'>
-                {service.title}
-              </h3>
+                <h3 className='text-xl md:text-2xl font-semibold mb-4 text-gray-800 text-center lg:text-left'>
+                  {service.title}
+                </h3>
 
-              {/* Description */}
-              <p className='text-gray-600 mb-6 leading-relaxed text-center lg:text-left'>
-                {service.description}
-              </p>
-
-              {/* Badge */}
-              <div className='flex items-start gap-2 bg-red-50 p-4 rounded-lg'>
-                <FaCheckCircle className='text-red-700 flex-shrink-0 mt-1' />
-                <p className='text-sm text-gray-700'>
-                  {service.badge}
+                <p className='text-gray-600 mb-6 leading-relaxed text-center lg:text-left'>
+                  {service.description}
                 </p>
+
+                <div className='flex items-start gap-2 bg-red-50 p-4 rounded-lg'>
+                  <FaCheckCircle className='text-red-700 flex-shrink-0 mt-1' />
+                  <p className='text-sm text-gray-700'>
+                    {service.badge}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* CTA Section */}
-        <div className={`mt-16 text-center transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '600ms' }}>
+        <div 
+          className={`mt-16 text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`} 
+          style={{ transitionDelay: '600ms' }}
+        >
           <p className='text-gray-800 mb-6 text-lg'>
             Prêt à améliorer la sécurité de votre entreprise ?
           </p>
+
           <div className='flex flex-wrap justify-center gap-4'>
             <a 
               href="#Contact" 
@@ -117,6 +80,7 @@ const Domains = () => {
             >
               Demander un audit
             </a>
+
             <a 
               href="#About" 
               className='bg-transparent border-2 border-red-700 text-red-700 px-8 py-3 rounded-full font-medium hover:bg-red-700 hover:text-white transition-colors'
